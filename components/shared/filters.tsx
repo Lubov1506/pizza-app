@@ -30,7 +30,7 @@ export const Filters = ({ className }: FiltersProps) => {
         </div>
 
         <RangeSlider min={0} max={1000} step={10} value={[0, 1000]} />
-      </div>{" "}
+      </div>
       <CheckBoxFiltersGroup
         title="Ingridients"
         className="mt-5"
