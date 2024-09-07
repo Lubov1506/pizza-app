@@ -1,6 +1,6 @@
 import { Nunito } from "next/font/google";
 
-import "./globals.css";
+import './globals.css';
 import { Header } from "@/components/shared";
 // import { Providers } from '@/shared/components/shared/providers';
 

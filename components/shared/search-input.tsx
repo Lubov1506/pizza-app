@@ -22,8 +22,13 @@ export const SearchInput = ({ className }: SearchInputProps) => {
     setFocused(true);
   };
   useDebounce(
-    () => {
-      Api.products.search(searchQuery).then((items) => setProducts(items));
+    async () => {
+      try {
+        const response = await Api.products.search(searchQuery);
+        setProducts(response);
+      } catch (e) {
+        console.log(e);
+      }
     },
     300,
     [searchQuery]
