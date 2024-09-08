@@ -9,13 +9,13 @@ export interface CheckBoxFiltersGroupProps {
   className?: string;
   title: string;
   items: Item[];
-  defaultItems: Item[];
+  defaultItems?: Item[];
   limit?: number;
   loading?: boolean;
   searchInputPlaceholder?: string;
   onClickCheckbox?: (id: string) => void;
   defaultValue?: string[];
-  selectedIds?: Set<string>;
+  selected?: Set<string>;
   name?: string;
 }
 
@@ -27,10 +27,10 @@ export const CheckBoxFiltersGroup = ({
   defaultValue,
   limit = 5,
   searchInputPlaceholder = "Search",
-  selectedIds,
+  selected,
   onClickCheckbox,
   loading,
-  name
+  name,
 }: CheckBoxFiltersGroupProps) => {
   const [showAll, setShowAll] = useState(false);
   const [searchValue, setSearchValue] = useState("");
@@ -60,7 +60,7 @@ export const CheckBoxFiltersGroup = ({
     ? items.filter((item) =>
         item.text.toLowerCase().includes(searchValue.toLowerCase())
       )
-    : defaultItems?.slice(0, limit);
+    : (defaultItems || items).slice(0, limit);
   return (
     <div className={className}>
       <p className="font-bold my-3">{title}</p>
@@ -81,7 +81,7 @@ export const CheckBoxFiltersGroup = ({
             text={item.text}
             value={item.value}
             endAdorment={item.endAdorment}
-            checked={selectedIds?.has(item.value)}
+            checked={selected?.has(item.value)}
             onCheckedChange={() => onClickCheckbox?.(item.value)}
             name={name}
           />

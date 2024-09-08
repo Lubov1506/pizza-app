@@ -125,7 +125,7 @@ export const _ingredients = [
     price: 79,
     imageUrl: "/images/ingredients/ingredient-18.png",
   },
-].map((obj, index) => ({ id: index + 1, ...obj }));
+].map((obj) => ({  ...obj }));
 
 export const products = [
   {

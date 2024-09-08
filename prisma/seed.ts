@@ -17,7 +17,7 @@ const randomDecimalNumber = (min: number, max: number) => {
 // }) => {
 //   return {
 //     productId,
-//     price: randomDecimalNumber(190, 600),
+//     price: randomDecimalNumber(5, 40),
 //     pizzaType,
 //     size,
 //   } as Prisma.ProductItemUncheckedCreateInput;
@@ -52,7 +52,7 @@ async function up() {
 
   const pizza1 = await prisma.product.create({
     data: {
-      name: "Пепперони фреш",
+      name: "Pepperoni Fresh",
       imageUrl: "/images/pizzas/pizza-1.webp",
       categoryId: 1,
       ingredients: {
@@ -63,7 +63,7 @@ async function up() {
 
   const pizza2 = await prisma.product.create({
     data: {
-      name: "Сырная",
+      name: "Cheese",
       imageUrl: "/images/pizzas/pizza-2.webp",
       categoryId: 1,
       ingredients: {
@@ -74,7 +74,7 @@ async function up() {
 
   const pizza3 = await prisma.product.create({
     data: {
-      name: "Чоризо фреш",
+      name: "Chorizo fresh",
       imageUrl: "/images/pizzas/pizza-3.webp",
       categoryId: 1,
       ingredients: {
@@ -89,93 +89,93 @@ async function up() {
         productId: pizza1.id,
         pizzaType: 1,
         size: 20,
-        price: randomDecimalNumber(190, 600),
+        price: randomDecimalNumber(5, 40),
       },
       {
         productId: pizza1.id,
         pizzaType: 2,
         size: 30,
-        price: randomDecimalNumber(190, 600),
+        price: randomDecimalNumber(5, 40),
       },
       {
         productId: pizza1.id,
         pizzaType: 2,
         size: 40,
-        price: randomDecimalNumber(190, 600),
+        price: randomDecimalNumber(5, 40),
       },
       {
         productId: pizza2.id,
         pizzaType: 1,
         size: 20,
-        price: randomDecimalNumber(190, 600),
+        price: randomDecimalNumber(5, 40),
       },
       {
         productId: pizza2.id,
         pizzaType: 1,
         size: 30,
-        price: randomDecimalNumber(190, 600),
+        price: randomDecimalNumber(5, 40),
       },
       {
         productId: pizza2.id,
         pizzaType: 1,
         size: 40,
-        price: randomDecimalNumber(190, 600),
+        price: randomDecimalNumber(5, 40),
       },
       {
         productId: pizza2.id,
         pizzaType: 2,
         size: 20,
-        price: randomDecimalNumber(190, 600),
+        price: randomDecimalNumber(5, 40),
       },
       {
         productId: pizza2.id,
         pizzaType: 2,
         size: 30,
-        price: randomDecimalNumber(190, 600),
+        price: randomDecimalNumber(5, 40),
       },
       {
         productId: pizza2.id,
         pizzaType: 2,
         size: 40,
-        price: randomDecimalNumber(190, 600),
+        price: randomDecimalNumber(5, 40),
       },
 
       {
         productId: pizza3.id,
         pizzaType: 1,
         size: 20,
-        price: randomDecimalNumber(190, 600),
+        price: randomDecimalNumber(5, 40),
       },
       {
         productId: pizza3.id,
         pizzaType: 2,
         size: 30,
-        price: randomDecimalNumber(190, 600),
+        price: randomDecimalNumber(5, 40),
       },
       {
         productId: pizza3.id,
         pizzaType: 2,
         size: 40,
-        price: randomDecimalNumber(190, 600),
+        price: randomDecimalNumber(5, 40),
       },
 
-      { productId: 1, price: randomDecimalNumber(190, 600) },
-      { productId: 2, price: randomDecimalNumber(190, 600) },
-      { productId: 3, price: randomDecimalNumber(190, 600) },
-      { productId: 4, price: randomDecimalNumber(190, 600) },
-      { productId: 5, price: randomDecimalNumber(190, 600) },
-      { productId: 6, price: randomDecimalNumber(190, 600) },
-      { productId: 7, price: randomDecimalNumber(190, 600) },
-      { productId: 8, price: randomDecimalNumber(190, 600) },
-      { productId: 9, price: randomDecimalNumber(190, 600) },
-      { productId: 10, price: randomDecimalNumber(190, 600) },
-      { productId: 11, price: randomDecimalNumber(190, 600) },
-      { productId: 12, price: randomDecimalNumber(190, 600) },
-      { productId: 13, price: randomDecimalNumber(190, 600) },
-      { productId: 14, price: randomDecimalNumber(190, 600) },
-      { productId: 15, price: randomDecimalNumber(190, 600) },
-      { productId: 16, price: randomDecimalNumber(190, 600) },
-      { productId: 17, price: randomDecimalNumber(190, 600) },
+      { productId: 1, price: randomDecimalNumber(5, 40) },
+      { productId: 2, price: randomDecimalNumber(5, 40) },
+      { productId: 3, price: randomDecimalNumber(5, 40) },
+      { productId: 4, price: randomDecimalNumber(5, 40) },
+      { productId: 5, price: randomDecimalNumber(5, 40) },
+      { productId: 6, price: randomDecimalNumber(5, 40) },
+      { productId: 7, price: randomDecimalNumber(5, 40) },
+      { productId: 8, price: randomDecimalNumber(5, 40) },
+      { productId: 9, price: randomDecimalNumber(5, 40) },
+      { productId: 10, price: randomDecimalNumber(5, 40) },
+      { productId: 11, price: randomDecimalNumber(5, 40) },
+      { productId: 12, price: randomDecimalNumber(5, 40) },
+      { productId: 13, price: randomDecimalNumber(5, 40) },
+      { productId: 14, price: randomDecimalNumber(5, 40) },
+      { productId: 15, price: randomDecimalNumber(5, 40) },
+      { productId: 16, price: randomDecimalNumber(5, 40) },
+      { productId: 17, price: randomDecimalNumber(5, 40) },
     ],
   });
   await prisma.cart.createMany({
