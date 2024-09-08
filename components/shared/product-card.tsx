@@ -3,7 +3,6 @@ import React from "react";
 import { Title } from "./title";
 import { Button } from "../ui";
 import { Plus } from "lucide-react";
-import Image from "next/image";
 export interface ProductCardProps {
   id: number;
   price: number;
@@ -29,7 +28,7 @@ export const ProductCard = ({
         <Title text={name} size="sm" className="mb-1 mt-3 font-bold" />
 
         <p className="text-sm text-gray-400">
-          Chicken, mocarella, cheder, parmezan, souse, tomatoes
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis ab eius at dolores odit 
         </p>
 
         <div className="flex justify-between items-center mt-4">

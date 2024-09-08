@@ -1,23 +1,18 @@
-'use client';
+"use client";
 import { cn } from "@/lib/utils";
 import { useCategoryStore } from "@/store/category";
+import { Category } from "@prisma/client";
 import React from "react";
 export interface CategoriesProps {
+  items: Category[];
   className?: string;
 }
 
-const cats = [
-  {id:1, name: 'Pizzas'},
-  {id:2, name: 'Mix'},
-  {id:3, name: 'Drinks'},
-  {id:4, name: 'Deserts'},
-  {id:5, name: 'Coktails'},
-]
-export const Categories = ({}: CategoriesProps) => {
+export const Categories = ({items}: CategoriesProps) => {
   const activeCategoryId = useCategoryStore((state) => state.activeId);
   return (
-    <div className={cn('inline-flex gap-1 bg-gray-50 p-1 rounded-2xl')}>
-      {cats.map(({name, id}, idx) => (
+    <div className={cn("inline-flex gap-1 bg-gray-50 p-1 rounded-2xl")}>
+      {items.map(({ name, id }, idx) => (
         <a
           href={`/#${name}`}
           key={idx}
@@ -26,7 +21,6 @@ export const Categories = ({}: CategoriesProps) => {
             activeCategoryId === id &&
               "bg-white shadow-md shadow-gray-300 text-primary"
           )}
-
         >
           <button>{name}</button>
         </a>

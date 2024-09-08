@@ -5,14 +5,25 @@ import {
   Title,
   TopBar,
 } from "@/components/shared";
+import { prisma } from "@/prisma/prisma-client";
 
-export default function Home() {
+export default async function Home() {
+  const categories = await prisma.category.findMany({
+    include: {
+      products: {
+        include: {
+          ingredients: true,
+          items: true,
+        },
+      },
+    },
+  });
   return (
     <>
       <Container className="mt-10">
         <Title text="All pizzas" size="lg" className="font-extrabold" />
       </Container>
-      <TopBar />
+      <TopBar categories={categories.filter((c) => c.products.length > 0)} />
       <Container className="pb-14 mt-10">
         <div className="flex gap-[60px]">
           <div>
@@ -20,94 +31,17 @@ export default function Home() {
           </div>
           <div className="flex-1">
             <div className="flex flex-col gap-16">
-              <ProductsGroupList
-                title="Pizzas"
-                categoryId={1}
-                items={[
-                  {
-                    id: "1",
-                    name: "Margherita",
-                    imageUrl: "/images/pizza-2.webp",
-                    price: 10,
-                    items: [{ price: 10 }],
-                  },
-                  {
-                    id: "2",
-                    name: "Margherita",
-                    imageUrl: "/images/pizza-2.webp",
-
-                    price: 10,
-                    items: [{ price: 10 }],
-                  },
-                  {
-                    id: "3",
-                    name: "Margherita",
-                    imageUrl: "/images/pizza-2.webp",
-
-                    price: 10,
-                    items: [{ price: 10 }],
-                  },
-                  {
-                    id: "4",
-                    name: "Margherita",
-                    imageUrl: "/images/pizza-2.webp",
-
-                    price: 15,
-                    items: [{ price: 15 }],
-                  },
-                  {
-                    id: "5",
-                    name: "Margherita",
-                    imageUrl: "/images/pizza-2.webp",
-                    price: 15,
-                    items: [{ price: 15 }],
-                  },
-                ]}
-              />
-              <ProductsGroupList
-                title="Mix"
-                categoryId={2}
-                items={[
-                  {
-                    id: "1",
-                    name: "Margherita",
-                    imageUrl: "/images/pizza-2.webp",
-                    price: 10,
-                    items: [{ price: 10 }],
-                  },
-                  {
-                    id: "2",
-                    name: "Margherita",
-                    imageUrl: "/images/pizza-2.webp",
-
-                    price: 10,
-                    items: [{ price: 10 }],
-                  },
-                  {
-                    id: "3",
-                    name: "Margherita",
-                    imageUrl: "/images/pizza-2.webp",
-
-                    price: 10,
-                    items: [{ price: 10 }],
-                  },
-                  {
-                    id: "4",
-                    name: "Margherita",
-                    imageUrl: "/images/pizza-2.webp",
-
-                    price: 15,
-                    items: [{ price: 15 }],
-                  },
-                  {
-                    id: "5",
-                    name: "Margherita",
-                    imageUrl: "/images/pizza-2.webp",
-                    price: 15,
-                    items: [{ price: 15 }],
-                  },
-                ]}
-              />
+              {categories.map(
+                (category) =>
+                  category.products.length > 0 && (
+                    <ProductsGroupList
+                      key={category.id}
+                      title={category.name}
+                      items={category.products}
+                      categoryId={category.id}
+                    />
+                  )
+              )}
             </div>
           </div>
         </div>
