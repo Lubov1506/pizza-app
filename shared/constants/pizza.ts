@@ -4,8 +4,8 @@ export const mapPizzaSizes = {
   40: "Large",
 } as const;
 export const mapPizzaTypes = {
-  1: "Traditional",
-  2: "Thin",
+  1: "traditional",
+  2: "thin",
 } as const;
 
 export const pizzaSizes = Object.entries(mapPizzaSizes).map(
