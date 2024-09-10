@@ -34,7 +34,7 @@ export default async function ProductPage({
             deserunt eum officia saepe ratione ducimus amet, nam ullam .
           </p>
           <GroupVariants
-            selectedValue="2"
+            value="2"
             items={[
               {
                 name: "sm",

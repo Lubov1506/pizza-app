@@ -15,7 +15,8 @@ export interface ChoosePizzaFormProps {
   name: string;
   ingredients: Ingredient[];
   items: ProductItem[];
-  onClickAddCart?: VoidFunction;
+  loading?: boolean;
+  onSubmit: (itemId: number, ingredients: number[]) => void;
   className?: string;
 }
 
@@ -24,7 +25,8 @@ export const ChoosePizzaForm = ({
   name,
   ingredients,
   items,
-  onClickAddCart,
+  onSubmit,
+  loading,
   className,
 }: ChoosePizzaFormProps) => {
   const {
@@ -32,6 +34,7 @@ export const ChoosePizzaForm = ({
     type,
     setSize,
     availableSizes,
+    currentItemId,
     selectedIngredients,
     addIngredient,
     setType,
@@ -45,12 +48,9 @@ export const ChoosePizzaForm = ({
     selectedIngredients
   );
   const handleClickAdd = () => {
-    onClickAddCart?.();
-    console.log({
-      size,
-      type,
-      ingredients: selectedIngredients,
-    });
+    if (currentItemId) {
+      onSubmit(currentItemId, Array.from(selectedIngredients));
+    }
   };
   return (
     <div className={cn(className, "flex flex-1")}>
@@ -89,6 +89,7 @@ export const ChoosePizzaForm = ({
           </div>
         </div>
         <Button
+          loading={loading}
           className="h-[55px] px-10 text-base rounded-[18px] w-full mt-10"
           onClick={handleClickAdd}
         >
