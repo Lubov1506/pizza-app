@@ -18,5 +18,6 @@ export { CartButton } from "./cart-button";
 export { CartDrawer } from "./cart-drawer";
 export { CartDrawerItem } from "./cart-drawer-item";
 export { CountButton } from "./count-button";
+export { ProductForm } from "./product-form";
 
 export * from "./modals";
