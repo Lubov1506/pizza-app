@@ -19,5 +19,7 @@ export { CartDrawer } from "./cart-drawer";
 export { CartDrawerItem } from "./cart-drawer-item";
 export { CountButton } from "./count-button";
 export { ProductForm } from "./product-form";
+export { WhiteBlock } from "./white-block";
+export { CheckoutPriceItem } from "./checkout-price-item";
 
 export * from "./modals";
