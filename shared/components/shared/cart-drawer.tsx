@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React from "react";
 import {
   Sheet,
   SheetClose,
@@ -14,37 +14,15 @@ import Link from "next/link";
 import { Button } from "../ui";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { CartDrawerItem } from "./cart-drawer-item";
-import { useCartStore } from "@/shared/store/cart";
 import { cn, getCartItemDetails } from "@/shared/lib";
 import { PizzaSize, PizzaType } from "@/shared/constants/pizza";
 import Image from "next/image";
 import { Title } from "./title";
+import { useCart } from "@/shared/hooks";
 
-export interface CartDrawerProps {
-  children: React.ReactNode;
-  className?: string;
-}
-
-export const CartDrawer: React.FC<React.PropsWithChildren<CartDrawerProps>> = ({
-  children,
-  className,
-}: CartDrawerProps) => {
-  const [
-    items,
-    totalAmount,
-    fetchCartItems,
-    updateItemQuantity,
-    removeCartItem,
-  ] = useCartStore((state) => [
-    state.items,
-    state.totalAmount,
-    state.fetchCartItems,
-    state.updateItemQuantity,
-    state.removeCartItem,
-  ]);
-  useEffect(() => {
-    fetchCartItems();
-  }, []);
+export const CartDrawer: React.FC<React.PropsWithChildren> = ({ children }) => {
+  const { totalAmount, items, updateItemQuantity, removeCartItem } = useCart();
+  const [redirecting, setRedirecting] = React.useState(false);
   const onClickCountButton = (
     id: number,
     quantity: number,
@@ -135,8 +113,13 @@ export const CartDrawer: React.FC<React.PropsWithChildren<CartDrawerProps>> = ({
                   </span>
                   <span className="text-lg font-bold">{totalAmount} $</span>
                 </div>
-                <Link href={"/cart"}>
-                  <Button type="submit" className="w-full h-12 text-base">
+                <Link href={"/checkout"}>
+                  <Button
+                    onClick={() => setRedirecting(true)}
+                    loading={redirecting}
+                    type="submit"
+                    className="w-full h-12 text-base"
+                  >
                     Place an order
                     <ArrowRight className="w-5 ml-2" />
                   </Button>

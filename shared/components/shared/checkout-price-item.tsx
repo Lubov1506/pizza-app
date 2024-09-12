@@ -4,7 +4,7 @@ export interface CheckoutPriceItemProps {
   className?: string;
   title?: React.ReactNode;
   icon?: React.ReactNode;
-  value?: string;
+  value?: string | number;
 }
 
 export const CheckoutPriceItem = ({
@@ -20,7 +20,7 @@ export const CheckoutPriceItem = ({
         {title}
         <div className="flex-1 border-b border-dashed border-b-stone-200 relative -top-1 mx-2" />
       </span>
-      <span className="text-lg font-bold">{value}</span>
+      <span className="text-lg font-bold">{value} $</span>
     </div>
   );
 };

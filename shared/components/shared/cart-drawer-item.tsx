@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import { cn } from "@/shared/lib";
 import React from "react";
 import * as CartItem from "./cart-item-details";
@@ -20,11 +20,17 @@ export const CartDrawerItem = ({
   quantity,
   disabled,
   onClickCountButton,
-  onClickRemove ,
+  onClickRemove,
   price,
 }: CartDrawerItemProps) => {
   return (
-    <div className={cn("flex bg-white p-5 gap-6", {'opacity-50 pointer-events-none':disabled}, className)}>
+    <div
+      className={cn(
+        "flex bg-white p-5 gap-6",
+        { "opacity-50 pointer-events-none": disabled },
+        className
+      )}
+    >
       <CartItem.Image src={imageUrl} />
       <div className="flex-1">
         <CartItem.Info name={name} details={details} />
@@ -35,7 +41,11 @@ export const CartDrawerItem = ({
 
           <div className="flex gap-3 items-center">
             <CartItem.Price value={price} />
-            <TrashIcon onClick={onClickRemove} className="text--gray-400 hover:text-gray-600 cursor-pointer" size={16}/>
+            <TrashIcon
+              onClick={onClickRemove}
+              className="text--gray-400 hover:text-gray-600 cursor-pointer"
+              size={16}
+            />
           </div>
         </div>
       </div>
