@@ -1,7 +1,6 @@
 import React from "react";
 import { WhiteBlock } from "../white-block";
 import { FormInput } from "../form";
-import { Input } from "../../ui";
 
 export interface CheckoutPersonalFormProps {
   className?: string;

@@ -4,8 +4,10 @@ import { CheckoutProductItem } from "../checkout-product-item";
 import { PizzaSize, PizzaType } from "@/shared/constants/pizza";
 import { CartStateItem } from "@/shared/lib/get-cart-details";
 import { getCartItemDetails } from "@/shared/lib";
+import { CartItemSkeleton } from "../checkout-item-skeleton";
 export interface CheckoutCartProps {
   className?: string;
+  loading?: boolean;
   items: CartStateItem[];
   onClickCountButton: (
     id: number,
@@ -20,11 +22,16 @@ export const CheckoutCart = ({
   onClickCountButton,
   removeCartItem,
   className,
+  loading,
 }: CheckoutCartProps) => {
   return (
     <WhiteBlock title="1. Order" className={className}>
       <div className="flex flex-col gap-5">
-        {items.map((item) => (
+        {loading &&
+          [...Array(2)].map((_, idx) => (
+            <CartItemSkeleton key={idx} />
+          ))}
+        {!loading && !!items.length && items.map((item) => (
           <CheckoutProductItem
             id={item.id}
             key={item.id}
