@@ -13,10 +13,10 @@ export const CheckoutPersonalForm = ({
   return (
     <WhiteBlock title="2. Your details" className={className}>
       <div className="grid grid-cols-2 gap-5">
-        <Input name="firstName" className="text-base" placeholder="Name" />
-        <Input name="lastName" className="text-base" placeholder="Last name" />
-        <Input name="email" className="text-base" placeholder="Email" />
-        <FormInput name="phone" className="text-base" placeholder="Phone" />
+        <FormInput name="firstName" className="text-base" placeholder="Name" label="First name" />
+        <FormInput name="lastName" className="text-base" placeholder="Last name" label="Last name"/>
+        <FormInput name="email" className="text-base" placeholder="Email"  label="Email"/>
+        <FormInput name="phone" className="text-base" placeholder="Phone" label="Phone"/>
       </div>
     </WhiteBlock>
   );
